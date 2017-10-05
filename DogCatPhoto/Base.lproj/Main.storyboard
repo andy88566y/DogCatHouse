@@ -1,24 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8oe-JL-Ch3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ArialHB.ttc">
+            <string>ArialHebrew-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--DogCatPhoto-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="DogCatPhoto" id="BYZ-38-t0r" customClass="PhotoPresentVC" customModule="DogCatPhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is boring. Press right-up button!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BI7-70-MkR">
+                                <rect key="frame" x="50.5" y="83.5" width="274" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="E6N-Qg-83b"/>
+                                    <constraint firstAttribute="height" constant="100" id="Utp-00-XGE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tp8-Pv-cMx">
+                                <rect key="frame" x="0.0" y="217" width="375" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="cOg-gt-0ev"/>
+                                    <constraint firstAttribute="width" constant="375" id="qAC-cl-J7s"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tp8-Pv-cMx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4Ix-x2-k9s"/>
+                            <constraint firstItem="tp8-Pv-cMx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GW5-9T-HJa"/>
+                            <constraint firstItem="BI7-70-MkR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HsZ-uy-sPG"/>
+                            <constraint firstItem="BI7-70-MkR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19.5" id="Vsy-mw-A9D"/>
+                            <constraint firstItem="tp8-Pv-cMx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qNv-AJ-jt0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="DogCatPhoto" id="A9a-Hg-gHk">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6NC-ds-EY2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2dd-dJ-GMf">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="1bf-Pq-CJh" kind="show" identifier="presentPhotoPickerVC" id="wkW-KA-Gja"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PhotoNameLbl" destination="BI7-70-MkR" id="hHf-aR-oXF"/>
+                        <outlet property="photoImageView" destination="tp8-Pv-cMx" id="ZHZ-s4-1qy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="476" y="133.5832083958021"/>
+        </scene>
+        <!--Photo PickerVC-->
+        <scene sceneID="qiO-b0-jOp">
+            <objects>
+                <viewController id="1bf-Pq-CJh" customClass="PhotoPickerVC" customModule="DogCatPhoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BSl-5D-y46">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VAk-Zs-Txv">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNg-yV-jTy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Da'an Park">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="DLZ-5P-J1h"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-yH-LaO">
+                                        <rect key="frame" x="0.0" y="100.5" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Da Jia Park with Fire"/>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="IZm-hM-rgD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R40-5w-X5H">
+                                        <rect key="frame" x="0.0" y="201" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Hot Pot"/>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="jfd-ss-uqh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfF-en-Myg">
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Go Hiking"/>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="aQU-x5-jau"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrI-TX-qdu">
+                                        <rect key="frame" x="0.0" y="402" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Airport Metro"/>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="sxe-as-Xxa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-Rf-sPX">
+                                        <rect key="frame" x="0.0" y="502.5" width="375" height="100.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="DogCatHouse">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="PhotoBtnWasPressedWithSender:" destination="1bf-Pq-CJh" eventType="touchUpInside" id="Xow-og-12A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a05-jx-oZ7" firstAttribute="trailing" secondItem="VAk-Zs-Txv" secondAttribute="trailing" id="FDL-Z1-VeE"/>
+                            <constraint firstItem="a05-jx-oZ7" firstAttribute="bottom" secondItem="VAk-Zs-Txv" secondAttribute="bottom" id="LCn-l3-cic"/>
+                            <constraint firstItem="VAk-Zs-Txv" firstAttribute="leading" secondItem="a05-jx-oZ7" secondAttribute="leading" id="To7-Nf-IkV"/>
+                            <constraint firstItem="VAk-Zs-Txv" firstAttribute="top" secondItem="a05-jx-oZ7" secondAttribute="top" id="fNR-EY-0Ro"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a05-jx-oZ7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EoN-AG-ZrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pjV-jF-gOb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8oe-JL-Ch3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W7w-4d-MD5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WJj-w3-H75"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LGK-VG-2Hd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="134"/>
         </scene>
     </scenes>
 </document>
